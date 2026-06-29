@@ -13,9 +13,17 @@ def find_common_items(
     Space Complexity:
     Optimal time complexity:
     """
-    common_items: List[ItemType] = []
-    for i in first_sequence:
-        for j in second_sequence:
-            if i == j and i not in common_items:
-                common_items.append(i)
-    return common_items
+    # 1. Convert second_sequence into a Python set for O(1) lookups
+    second_set = set(second_sequence)
+    
+    # 2. Use a set to keep track of results (handles the "Unique Items" requirement)
+    common_items_set: Set[ItemType] = set()
+
+    # 3. Use one loop to go through first_sequence
+    for item in first_sequence:
+        # 4. Check if the item is in the second_set
+        if item in second_set:
+            common_items_set.add(item)
+
+    # 5. Convert final set back into a list
+    return list(common_items_set)

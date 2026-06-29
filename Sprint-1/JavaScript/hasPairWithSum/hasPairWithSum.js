@@ -10,11 +10,14 @@
  * @returns {boolean} True if pair exists, false otherwise
  */
 export function hasPairWithSum(numbers, target) {
-  for (let i = 0; i < numbers.length; i++) {
-    for (let j = i + 1; j < numbers.length; j++) {
-      if (numbers[i] + numbers[j] === target) {
-        return true;
-      }
+  const numbersSet = new Set();
+  
+  for (let i=0; i<numbers.length; i++) {
+    const remainingNumberNeeded = target - numbers[i];
+    if (numbersSet.has(remainingNumberNeeded)) {
+      return true;
+    } else {
+      numbersSet.add(numbers[i]);
     }
   }
   return false;

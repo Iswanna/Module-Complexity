@@ -54,3 +54,28 @@ class LinkedList:
 
         # Logic 4: Return the name/value
         return value_to_return
+
+    def remove(self, node):
+        """Removes a specific node from anywhere in the list."""
+        if node is None:
+            return
+
+        # Logic 3: Update Head/Tail pointers if the node is at the ends
+        if node == self.head:
+            self.head = node.next
+        
+        if node == self.tail:
+            self.tail = node.previous
+
+        # Logic 1 & 2: Re-link the neighbors
+        # If there's someone behind, they skip over 'node' to grab 'node.next'
+        if node.previous is not None:
+            node.previous.next = node.next
+            
+        # If there's someone ahead, they reach back to grab 'node.previous'
+        if node.next is not None:
+            node.next.previous = node.previous
+
+        # Optional: Clean up the removed node's own pointers
+        node.next = None
+        node.previous = None

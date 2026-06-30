@@ -35,4 +35,18 @@ class LinkedList:
         if self.tail is None:
             self.tail = node
 
-    
+    def pop_tail(self):
+        """Removes the last node (the oldest item) and returns it."""
+        if self.tail is None:
+            return None
+
+        old_tail = self.tail
+
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        else:
+            self.tail = self.tail.previous
+            self.tail.next = None
+            
+        return old_tail

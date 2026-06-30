@@ -66,3 +66,23 @@ class LinkedList:
         # Clean up pointers of the removed node
         node.next = None
         node.previous = None
+
+
+class LruCache:
+    """
+    The LRU Cache: Dictionary + Linked List.
+    Provides O(1) time complexity for both get and set operations.
+    """
+    def __init__(self, limit):
+        # 1. Validation
+        if limit < 1:
+            raise ValueError("Cache limit must be at least 1.")
+            
+        # 2. Store the limit
+        self.limit = limit
+        
+        # 3. Dictionary for O(1) key lookups (Key -> Node)
+        self.lookup = {}
+        
+        # 4. Doubly Linked List for O(1) ordering
+        self.order = LinkedList()

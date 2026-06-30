@@ -102,3 +102,28 @@ class LruCache:
         self.order.push_head(node)
         
         return node.value
+
+    def set(self, key, value):
+        """
+        Logic for set(key, value):
+        If exists: update and move to front.
+        If new: check limit, evict tail if full, then add to front.
+        """
+        if key in self.lookup:
+            # Update existing
+            node = self.lookup[key]
+            node.value = value
+            self.order.remove(node)
+            self.order.push_head(node)
+        else:
+            # Check limit
+            if len(self.lookup) >= self.limit:
+                # Evict the oldest (tail)
+                evicted_node = self.order.pop_tail()
+                if evicted_node:
+                    del self.lookup[evicted_node.key]
+            
+            # Create and add new node
+            new_node = Node(key, value)
+            self.order.push_head(new_node)
+            self.lookup[key] = new_node

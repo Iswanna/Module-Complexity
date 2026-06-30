@@ -1,4 +1,4 @@
-# Changes Made: Linked List Implementation
+# Changes Made: Doubly Linked List Implementation
 
 ## 1. Core Logic (`linked_list.py`)
 - **Node Class**: Created a `Node` class to act as the building block of the list. Each node stores a `value` and has pointers for `next` and `previous`, allowing for bi-directional traversal.

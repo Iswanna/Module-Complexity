@@ -34,4 +34,23 @@ class LinkedList:
         # Logic 4: Return the node so we can reference it later
         return new_node
 
-    
+    def pop_tail(self):
+        """Removes the last node and returns its value."""
+        # Safety check: if list is empty
+        if self.tail is None:
+            return None
+
+        # Logic 1: Store the value to return later
+        value_to_return = self.tail.value
+
+        # Logic 2: If there is only one person in line
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        # Logic 3: If there are more people
+        else:
+            self.tail = self.tail.previous  # Move tail back one
+            self.tail.next = None           # New tail lets go of the old tail
+
+        # Logic 4: Return the name/value
+        return value_to_return

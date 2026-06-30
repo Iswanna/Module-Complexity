@@ -9,3 +9,16 @@ class Node:
         self.value = value
         self.next = None
         self.previous = None
+
+
+class LinkedList:
+    """
+    A Doubly Linked List to track the order of usage.
+    Head is Most Recently Used (MRU).
+    Tail is Least Recently Used (LRU).
+    """
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+   

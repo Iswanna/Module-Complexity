@@ -86,3 +86,19 @@ class LruCache:
         
         # 4. Doubly Linked List for O(1) ordering
         self.order = LinkedList()
+
+    def get(self, key):
+        """
+        Logic for get(key):
+        Find the item, move it to the front, return value.
+        """
+        if key not in self.lookup:
+            return None
+            
+        node = self.lookup[key]
+        
+        # Move to front (Most Recently Used)
+        self.order.remove(node)
+        self.order.push_head(node)
+        
+        return node.value

@@ -21,4 +21,18 @@ class LinkedList:
         self.head = None
         self.tail = None
 
-   
+    def push_head(self, node):
+        """Adds an existing node to the front of the list."""
+        node.next = self.head
+        node.previous = None
+        
+        if self.head is not None:
+            self.head.previous = node
+        
+        self.head = node
+        
+        # If list was empty, this node is also the tail
+        if self.tail is None:
+            self.tail = node
+
+    

@@ -50,3 +50,19 @@ class LinkedList:
             self.tail.next = None
             
         return old_tail
+
+    def remove(self, node):
+        """Unplucks a node from its current position in the list."""
+        if node.previous is not None:
+            node.previous.next = node.next
+        else:
+            self.head = node.next
+
+        if node.next is not None:
+            node.next.previous = node.previous
+        else:
+            self.tail = node.previous
+            
+        # Clean up pointers of the removed node
+        node.next = None
+        node.previous = None

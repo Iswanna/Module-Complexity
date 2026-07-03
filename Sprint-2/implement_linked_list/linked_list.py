@@ -1,3 +1,5 @@
+from typing import Any, Optional
+
 class Node:
     """
     Represents a single person in line.
@@ -5,10 +7,10 @@ class Node:
     """
     __slots__ = ['value', 'next', 'previous']
 
-    def __init__(self, value):
+    def __init__(self, value: Any):
         self.value = value
-        self.next = None      
-        self.previous = None  
+        self.next: Optional['Node'] = None
+        self.previous: Optional['Node'] = None
 
 
 class LinkedList:
@@ -16,10 +18,10 @@ class LinkedList:
     Manages the line by keeping track of the Head and the Tail.
     """
     def __init__(self):
-        self.head = None
-        self.tail = None
+        self.head: Optional[Node] = None
+        self.tail: Optional[Node] = None
 
-    def push_head(self, value):
+    def push_head(self, value: Any) -> Node:
         """Adds a new node to the front of the list."""
         new_node = Node(value)
 
@@ -34,7 +36,7 @@ class LinkedList:
         
         return new_node
 
-    def pop_tail(self):
+    def pop_tail(self) -> Optional[Any]:
         """Removes the last node and returns its value."""
       
         if self.tail is None:
@@ -52,7 +54,7 @@ class LinkedList:
 
         return value_to_return
 
-    def remove(self, node):
+    def remove(self, node: Optional[Node]) -> None:
         """Removes a specific node from anywhere in the list."""
         if node is None:
             return

@@ -44,13 +44,7 @@ class LinkedList:
 
         value_to_return = self.tail.value
 
-        if self.head == self.tail:
-            self.head = None
-            self.tail = None
-    
-        else:
-            self.tail = self.tail.previous  # Move tail back one
-            self.tail.next = None           # New tail lets go of the old tail
+        self.remove(self.tail)
 
         return value_to_return
 
